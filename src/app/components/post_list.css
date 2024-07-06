@@ -1,0 +1,26 @@
+.list-item{
+   background-color: rgb(254, 254, 254);
+   border-radius: 5px;
+   text-align: center;
+   justify-content: center;
+   width: 700px;
+   padding-bottom: 25px;
+   padding-top: 15px;
+   margin-bottom: 15px;
+   margin-top: 10px;
+   border: 0.5px solid rgb(184, 183, 183);
+}
+
+.list-item h2, span{
+    color: black;
+    text-decoration: none;
+}
+
+.list-item p{
+    color: gray;
+}
+
+
+
+
+

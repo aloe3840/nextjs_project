@@ -1,0 +1,30 @@
+.profile{
+    background-color: rgb(239, 239, 239);
+    width: 500px;
+    height: 600px;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+    padding-top: 30px;
+    align-items: center;
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; 
+    object-fit: cover;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.profile-btn{
+    background-color: gray;
+    color: white;
+    padding: 10px;
+    margin-top: 20px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+
