@@ -36,19 +36,25 @@ export default function HomeProfile({ login }) {
     };
 
     return (
-        <div className="profile">
-            <h1>Profile</h1> 
-            {image && <img src={image} alt="User selected" className='profile-img' />}
-            <h3>{name}</h3>
-            <br />
-            <button className='profile-btn' onClick={profileOpen}>프로필 설정</button>
-            {showProfile && 
-                <Profile 
-                    onNameChange={handleNameChange}
-                    onImageChange={handleImageChange} 
-                    onSubmit={profileClose}
-                />
-            }
-        </div>
+        login? (
+            <div className="profile">
+                <h1>Profile</h1> 
+                {image && <img src={image} alt="User selected" className='profile-img' />}
+                <h3>{name}</h3>
+                <br />
+                <button className='profile-btn' onClick={profileOpen}>프로필 설정</button>
+                {showProfile && 
+                    <Profile 
+                        onNameChange={handleNameChange}
+                        onImageChange={handleImageChange} 
+                        onSubmit={profileClose}
+                    />
+                }
+            </div>
+        ): (
+            <div className='profile-fail'>
+                <h3>로그인 후 프로필 설정이 가능합니다.</h3>
+            </div>
+        )
     );
 }

@@ -7,7 +7,7 @@ export default async function({params}){
     let result = await db.collection('post').findOne({_id: ObjectId.createFromHexString(params.slug)});
 
     return(
-        <div>
+        <div className="detail-container">
             <h2>{result?.title}</h2>
             <p>{result?.content}</p>
         </div>

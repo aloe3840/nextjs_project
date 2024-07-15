@@ -5,10 +5,13 @@ import { ObjectId } from "mongodb";
 export default async function handler(req, res){
         if(req.method === 'POST'){
             let {id, title, content} = req.body;
+            console.log(req.body)
+
             if(id && title && content){
                 try{
                     const db = (await connectDB).db('nextblog')
-                    let result = await db.collection('post').updateOne({_id: ObjectId.createFromHexString(id)},{
+                    let result = await db.collection('post').updateOne({_id: ObjectId.createFromHexString(id)},
+                    {
                         $set:{
                             title: title,
                             content: content

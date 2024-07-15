@@ -3,7 +3,7 @@ import Link from "next/link"
 import { useState } from "react"
 import './post_list.css'
 
-export default function PostList({result}){
+export default function PostList({result, login}){
     const [listData, setListData] = useState(result)  //동적화면변동을 위해 가져온 result를 useState에 담음
     const [goodBtn, setGoodBtn] = useState(result.map(() => 0))  //게시물 추천 초기값들을 0으로
    
@@ -21,7 +21,9 @@ export default function PostList({result}){
 
     return(
         <div>
+            
             {
+                
                 //반복문 돌려서 가져온 result안에 데이터가 표시되게
                 listData && listData.length > 0 ? result.map((item, index)=>{
                     return(
@@ -36,24 +38,22 @@ export default function PostList({result}){
                                 fetch('/api/delete/list_item',{
                                     method: 'DELETE',
                                     headers: {'Content-Type': 'application/json'},
-                                    body: JSON.stringify({id:item._id})
+                                    body: JSON.stringify({id:item._id, email: item.email})
                                 })
                                 .then((res)=>{
-                                    //fetch가 완료되면 실행될 코드. res엔 응답값 담겨있음
-                                    if(res.status === 200){
-                                        setListData(prev => prev.filter((i)=>i._id !== item._id)) //filter: 입력값을 배열에서 찾아 걸러줌
-                                        //then에서 return하면 다음 then
+                                    if(res.status == 200){
+                                        setListData(prev => prev.filter((i)=>i._id !== item._id)) 
                                         return res.json();
-                                    }else{
-                                        //200이 아니면 status 변경 X
-                                        return res.json();
+                                    }else if(res.status == 400){
+                                        alert('글 작성자만 삭제할 수 있습니다.')
+                                        return res.json()
                                     }
                                 }) 
                                 .then((resJson)=>{
-                                    console.log(resJson) //첫 번째 then에서 반환한 값을 매개변수로 받기 
+                                    console.log(resJson)  
                                 })
                                 .catch((error)=>{
-                                    console.log(error)  //fetch사용할 땐 굳이 try없어도 fetch로 가능. fetch가 then, catch를 지원
+                                    console.log(error)  
                                 })
                             }}> 삭제 🗑</span> 
                             <br></br>
@@ -68,6 +68,7 @@ export default function PostList({result}){
                         </div>
 
                       )
+                      
             }
         </div>
     )

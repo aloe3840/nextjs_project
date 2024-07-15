@@ -22,7 +22,7 @@ export default async function RootLayout({ children }) {
       <body className={inter.className}>
         <div className="nav-bar">
           <Link href='/' className="home">Home</Link>
-          <Link href='/list'>list</Link>
+          <Link href='/list' login={session}>list</Link>
           <Link href='/write'>write</Link>
           <LoginBtn login={session}/>
         </div>

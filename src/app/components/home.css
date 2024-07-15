@@ -27,4 +27,11 @@
     border-radius: 5px;
 }
 
+.profile-fail{ 
+    color: red;
+    padding-top: 250px;
+    padding-right: 130px;
+    text-decoration: underline;
+}
+
 
