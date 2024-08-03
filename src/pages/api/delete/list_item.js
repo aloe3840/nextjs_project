@@ -23,7 +23,7 @@ export default async function handler(req, res){
         }catch(error){
             res.status(500).json({msg: '서버 오류'+ error})
         }
-    }else{
+    }else{ 
         res.status(405).json({msg: 'DELETE요청만 가능합니다.'})
     }
 }

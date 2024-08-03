@@ -25,7 +25,7 @@ export default function PostList({result, login}){
             {
                 
                 //반복문 돌려서 가져온 result안에 데이터가 표시되게
-                listData && listData.length > 0 ? result.map((item, index)=>{
+                listData && listData.length > 0 ? listData.map((item, index)=>{
                     return(
                         <div key={index} className="list-item">
                             <Link href={'/detail/' + item._id} style={{textDecoration:'none'}}>
