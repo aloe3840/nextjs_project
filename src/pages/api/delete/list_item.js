@@ -13,7 +13,7 @@ export default async function handler(req, res){
             let session = await getServerSession(req, res, authOptions) //현재 로그인 정보
 
             if(session?.user?.email === email || session?.user?.email === 'admin@admin.com'){
-                const db = (await connectDB).db('mydb');  
+                const db = (await connectDB).db('nextblog');  
                 let result = await db.collection('post').deleteOne({_id: ObjectId.createFromHexString(id)});
                 res.status(200).json({msg: '삭제 완료'});
             }else{

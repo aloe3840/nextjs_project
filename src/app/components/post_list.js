@@ -42,7 +42,9 @@ export default function PostList({result, login}){
                                 })
                                 .then((res)=>{
                                     if(res.status == 200){
+                                        console.log(listData)
                                         setListData(prev => prev.filter((i)=>i._id !== item._id)) 
+                                        console.log(listData)
                                         return res.json();
                                     }else if(res.status == 400){
                                         alert('글 작성자만 삭제할 수 있습니다.')
